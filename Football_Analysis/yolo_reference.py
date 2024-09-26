@@ -3,7 +3,7 @@ from ultralytics import YOLO
 model = YOLO('models/best.pt')
 # model.to('cuda')
 
-result = model.predict('input_video/08fd33_4.mp4', save=True)
+result = model.predict('input_videos/08fd33_4.mp4', save=True)
 
 print(result[0])
 print('================')

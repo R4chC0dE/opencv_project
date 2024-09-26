@@ -2,6 +2,7 @@ runs/
 yolov*
 football-players-detection-1/
 models/
+output_videos/
 .DS_Store
 # Byte-compiled / optimized / DLL files
 __pycache__/
