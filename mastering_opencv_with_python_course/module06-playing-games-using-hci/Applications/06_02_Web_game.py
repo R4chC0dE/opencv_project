@@ -118,7 +118,7 @@ def play(prototxt_path, model_path):
 	new_frame_time = 0
 
 	net = cv2.dnn.readNetFromCaffe(prototxt_path, model_path)
-	cap = cv2.VideoCapture(0)
+	cap = cv2.VideoCapture(1)
 
 	# Counter for skipping frame.
 	count = 0
@@ -130,8 +130,8 @@ def play(prototxt_path, model_path):
 	frame_width, frame_height = int(cap.get(3)), int(cap.get(4))
 
 	# Co-ordinates of the bounding box on frame
-	left_x, top_y = frame_width // 2 - 150, frame_height // 2 - 200
-	right_x, bottom_y = frame_width // 2 + 150, frame_height // 2 + 200
+	left_x, top_y = frame_width // 2 - 250, frame_height // 2 - 300
+	right_x, bottom_y = frame_width // 2 + 250, frame_height // 2 + 300
 	bbox = [left_x, right_x, bottom_y, top_y]
 
 	while not cap.isOpened():
