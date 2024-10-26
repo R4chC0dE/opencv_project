@@ -5,6 +5,7 @@ models/
 output_videos/
 .DS_Store
 .idea
+.vscode
 
 
 # Byte-compiled / optimized / DLL files
