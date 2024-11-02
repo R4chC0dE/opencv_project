@@ -1,5 +1,5 @@
 import cv2
-s = 0  # Specify 0 for accessing the web camera.
+s = 1  # Specify 1 for accessing the web camera.
 source = cv2.VideoCapture(s)
 
 # Create a window to display the video stream.
