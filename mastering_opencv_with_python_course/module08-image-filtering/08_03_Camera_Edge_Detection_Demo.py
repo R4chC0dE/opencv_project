@@ -1,4 +1,6 @@
 import cv2
+import time
+
 s = 1  # Specify 1 for accessing the web camera.
 source = cv2.VideoCapture(s)
 
@@ -10,6 +12,10 @@ PREVIEW = 0   # Preview Mode
 CANNY   = 1   # Canny Edge Detector
 image_filter = PREVIEW
 result = None
+# Used to record the time when we processed last frame.
+prev_frame_time = 0
+# Used to record the time at which we processed current frame.
+new_frame_time = 0
 
 while True:
     has_frame, frame = source.read()
@@ -21,6 +27,16 @@ while True:
         result = frame
     elif image_filter == CANNY:
         result = cv2.Canny(frame, 80, 150)
+
+    # Calculating the FPS.
+    new_frame_time = time.time()
+    fps = int(1 / (new_frame_time - prev_frame_time))
+    prev_frame_time = new_frame_time
+
+    result = cv2.putText(
+        result, str(fps) + 'FPS', (200, 100),
+        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+    
     cv2.imshow(win_name, result)
 
     key = cv2.waitKey(1)
