@@ -23,10 +23,11 @@ while True:
         break
     # Flip video frame for convenience.
     frame = cv2.flip(frame,1)
+    frame = cv2.GaussianBlur(frame, (13, 13), 0)
     if image_filter == PREVIEW:
         result = frame
     elif image_filter == CANNY:
-        result = cv2.Canny(frame, 80, 150)
+        result = cv2.Canny(frame, 50, 70)
 
     # Calculating the FPS.
     new_frame_time = time.time()
@@ -35,7 +36,7 @@ while True:
 
     result = cv2.putText(
         result, str(fps) + 'FPS', (200, 100),
-        cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
+        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     
     cv2.imshow(win_name, result)
 
